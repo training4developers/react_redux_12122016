@@ -1,16 +1,17 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.DS_Store": true,
-        "node_modules/": false,
-        "dist/": false,
-        "reports/": true,
-        ".vscode/": true,
-        "typings/": true
-    },
-     "editor.tabSize": 2,
-     "editor.insertSpaces": false,
-     "editor.wrappingColumn": 1000
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.DS_Store": true,
+		"node_modules/": false,
+		"dist/": false,
+		"reports/": true,
+		".vscode/": false,
+		"typings/": false
+	},
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.wrappingColumn": 1000,
+	"javascript.validate.enable": false
 }

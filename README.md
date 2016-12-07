@@ -89,7 +89,24 @@ Step 5. Open a web browser, and navigate to [http://localhost:3000](http://local
 
 **To Modify the Web Application**
 
-Step 6. Open your favorite text editor (such as [Atom](https://atom.io/) or [Visual Studio Code](https://code.visualstudio.com)), and modify the files in the **src** folder. When file changes are saved, **webpack** will automatically transpile and bundle the application code and assets, and deploy it to the **dist** folder. To see the changes, reload your web browser.
+Step 6. Open your favorite text editor (such as [Atom](https://atom.io/) or [Visual Studio Code (preferred)](https://code.visualstudio.com)), and modify the files in the **src** folder. When file changes are saved, **webpack** will automatically transpile and bundle the application code and assets, and deploy it to the **dist** folder. To see the changes, reload your web browser.
+
+#### Recommended Editor Packages/Extensions
+
+For Visual Studio Code:
+
+HTMLHint (kaufman.HTMLHint)
+ESLint (dbaeumer.vscode-eslint)
+Flow Language Support (flowtype.flow-for-vscode)
+
+For Atom:
+
+PlatformIO IDE Terminal (platformio-ide-terminal)
+Linter (linter)
+Linter-ESLint (linter-eslint)
+Linter-Flow (linter-flow)
+Linter-HTMLHint (linter-htmlhint)
+React (react)
 
 ## NPM Scripts Command Reference
 

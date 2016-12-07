@@ -6,17 +6,14 @@ import ReactDOM from 'react-dom';
 import 'bootstrap-loader';
 import '../css/styles.scss';
 
-interface HelloWorldDefaultProps {
-	message: string
-}
+import type { HelloWorldProps } from './types/hello-world-props';
 
-interface HelloWorldProps {
-	message: string
-}
+class HelloWorld extends Component {
 
-class HelloWorld extends Component<HelloWorldDefaultProps,HelloWorldProps,void> {
+	props: HelloWorldProps;
+	state: void;
 
-	static defaultProps = {
+	static defaultProps: HelloWorldProps = {
 		message: 'Hello World!'
 	};
 
@@ -30,4 +27,4 @@ class HelloWorld extends Component<HelloWorldDefaultProps,HelloWorldProps,void> 
 
 }
 
-ReactDOM.render(<HelloWorld />, document.querySelector('main'));
+ReactDOM.render(<HelloWorld message="Bonjour le monde!" />, document.querySelector('main'));
