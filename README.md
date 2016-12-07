@@ -95,18 +95,20 @@ Step 6. Open your favorite text editor (such as [Atom](https://atom.io/) or [Vis
 
 For Visual Studio Code:
 
-HTMLHint (kaufman.HTMLHint)
-ESLint (dbaeumer.vscode-eslint)
-Flow Language Support (flowtype.flow-for-vscode)
+- HTMLHint (kaufman.HTMLHint)
+- ESLint (dbaeumer.vscode-eslint)
+- Flow Language Support (flowtype.flow-for-vscode)
 
 For Atom:
 
-PlatformIO IDE Terminal (platformio-ide-terminal)
-Linter (linter)
-Linter-ESLint (linter-eslint)
-Linter-Flow (linter-flow)
-Linter-HTMLHint (linter-htmlhint)
-React (react)
+- PlatformIO IDE Terminal (platformio-ide-terminal)
+- Linter (linter)
+- Linter-ESLint (linter-eslint)
+- Linter-Flow (linter-flow)
+- Linter-HTMLHint (linter-htmlhint)
+- React (react)
+
+For the Linter-Flow packages, edit the settings for the package to set the path to flow to be 'node_modules/.bin/flow'.
 
 ## NPM Scripts Command Reference
 
