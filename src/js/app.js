@@ -1,13 +1,31 @@
-import React, { Component } from 'react';
+/* @flow */
+
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import 'bootstrap-loader';
 import '../css/styles.scss';
 
-class HelloWorld extends Component {
+interface HelloWorldDefaultProps {
+	message: string
+}
 
-	render() {
-		return <h1>Hello World!</h1>;
+interface HelloWorldProps {
+	message: string
+}
+
+class HelloWorld extends Component<HelloWorldDefaultProps,HelloWorldProps,void> {
+
+	static defaultProps = {
+		message: 'Hello World!'
+	};
+
+	static propTypes = {
+		message: PropTypes.string
+	};
+
+	render(): React.Element<any> {
+		return <h1>{this.props.message}</h1>;
 	}
 
 }

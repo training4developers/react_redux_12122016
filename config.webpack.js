@@ -34,7 +34,7 @@ module.exports = {
 				test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader',
 				query: {
 					presets: [ 'react', 'latest' ],
-					plugins: ['transform-class-properties']
+					plugins: ['transform-class-properties','transform-flow-strip-types']
 				}
 			},
 			// processes JSON files, useful for config files and mock data

@@ -6,8 +6,8 @@
 		"jest": true,
 		"commonjs": true
 	},
-	"extends": ["eslint:recommended","plugin:react/recommended"],
-	"plugins": [ "react" ],
+	"extends": [ "eslint:recommended", "plugin:react/recommended", "plugin:flowtype/recommended" ],
+	"plugins": [ "react", "flowtype" ],
 	"parserOptions": {
 		"ecmaVersion": 2017,
 		"sourceType": "module",
