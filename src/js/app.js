@@ -3,31 +3,26 @@ import ReactDOM from 'react-dom';
 
 class HelloWorld extends React.Component {
 
+	constructor(props) {
+
+		super(props);
+
+		this.state = {
+			newColor: ''
+		};
+
+		this.onChange = this.onChange.bind(this);
+	}
+
+	onChange(e) {
+
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+
+	}
+
 	render() {
-
-		// return React.createElement('div',null, 
-		// 	React.createElement('h1',null, 'Hello World!')
-		// );
-
-		console.log(this.props);
-
-		// function myForEach(items, fn) {
-		// 	for (var x=0; x<items.length; x++) {
-		// 		fn(items[x]);
-		// 	}
-		// }
-
-		// const items = [];
-
-		// this.props.items.forEach(function(item) {
-		// 	items.push(<li>{item}</li>);
-		// });
-
-		//this.props.headerText = 'List of Cars';
-
-		// never ever...
-		//this.props.items.push('new item');
-		//this.props.something.something.someting = 2;
 
 		return <div>
 			<h1>{this.props.headerText}</h1>
@@ -36,6 +31,12 @@ class HelloWorld extends React.Component {
 					<li>{item}</li>
 				)}
 			</ul>
+			<form>
+				<label htmlFor="new-color-input">New Color:</label>
+				<input type="text" id="new-color-input" name="newColor"
+					value={this.state.newColor} onChange={this.onChange} />
+				<button>Add Color</button>
+			</form>
 		</div>;
 	}
 
@@ -44,3 +45,6 @@ class HelloWorld extends React.Component {
 const colors = ['red','blue','gold','white','yellow'];
 
 ReactDOM.render(<HelloWorld headerText='List of Colors' items={colors} />, document.querySelector('main'));
+
+
+
