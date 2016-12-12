@@ -67,25 +67,27 @@ $ npm i && npm start
 
 It could take a few minutes for this command to complete. If you have connection issues due to a proxy server, please edit the **.npmrc** file per the instructions in those files. Then re-run the command above.
 
-This set has been completed successfully when you receive the following message:
+This setup has been completed successfully when you receive a message similar to this one:
 
 ```bash
-Hash: 9c2fcd4942f7122f9a69
-[0] Version: webpack 1.13.2
-[0] Time: 11132ms
-[0]        Asset       Size  Chunks             Chunk Names
-[0]       app.js    85.9 kB       0  [emitted]  app
-[0] polyfills.js     745 kB       1  [emitted]  polyfills
-[0]    vendor.js    7.15 MB       2  [emitted]  vendor
-[0]   index.html  507 bytes          [emitted]  
-[0]     + 657 hidden modules
-[0] Child html-webpack-plugin for "index.html":
-[0]         + 3 hidden modules
+[0] Hash: 22b8756ee9084e76420f
+[0] Version: webpack 1.14.0
+[0] Time: 3731ms
+[0]                     Asset       Size  Chunks             Chunk Names
+[0]                    app.js     906 kB       0  [emitted]  app
+[0]                app.js.map    1.08 MB       0  [emitted]  app
+[0] ../images/placeholder.txt   20 bytes          [emitted]
+[0]             ../index.html  300 bytes          [emitted]
+[0]     + 186 hidden modules
+[1] [BS] File changed: dist/js/app.js
+[1] [BS] File changed: dist/images/placeholder.txt
+[1] [BS] File changed: dist/js/app.js.map
+[1] [BS] File changed: dist/index.html
 ```
 
 This terminal window is now running the web server, a second terminal window will need to be opened to run additional terminal commands.
 
-Step 5. Open a web browser, and navigate to [http://localhost:3000](http://localhost:3000).  The React web application should load and be usable.
+Step 5. If a web browser did not open automatically for you, then open a web browser, and navigate to [http://localhost:3000](http://localhost:3000).  The React web application should load and be usable.
 
 **To Modify the Web Application**
 
@@ -98,6 +100,8 @@ For Visual Studio Code:
 - HTMLHint (kaufman.HTMLHint)
 - ESLint (dbaeumer.vscode-eslint)
 - Flow Language Support (flowtype.flow-for-vscode)
+
+Visual Studio Code has built-in support for React and a Terminal, no package needs to be installed
 
 For Atom:
 
