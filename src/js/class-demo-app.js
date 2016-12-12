@@ -22,4 +22,6 @@ class HelloWorld extends React.Component {
 
 }
 
-ReactDOM.render(<HelloWorld />, document.querySelector('main'));
+const colors = ['red','blue','gold','white','yellow'];
+
+ReactDOM.render(<HelloWorld items={colors} />, document.querySelector('main'));
