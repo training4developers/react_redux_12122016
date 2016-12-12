@@ -22,9 +22,6 @@ class HelloWorld extends Component {
 	};
 
 	render(): React.Element<any> {
-
-		this.props.message = 'test';
-
 		return <h1>{this.props.message}</h1>;
 	}
 
