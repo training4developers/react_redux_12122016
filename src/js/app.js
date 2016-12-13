@@ -6,26 +6,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap-loader';
 import '../css/styles.scss';
 
-type ListHeaderProps = {
-	headerText: string
-};
-
-class ListHeader extends React.Component {
-
-	props: ListHeaderProps;
-
-	render() {
-
-		return <header>
-			<h1>{this.props.headerText}</h1>
-		</header>;
-	}
-
-}
-
-ListHeader.propTypes = {
-	headerText: React.PropTypes.string.isRequired
-};
+import { ListHeader } from './components/list-header';
 
 class ItemList extends React.Component {
 
@@ -88,8 +69,24 @@ class ItemForm extends BaseForm {
 
 }
 
+type ColorToolProps = {
+	items: string[],
+	headerText: string
+};
 
-class HelloWorld extends React.Component {
+type ColorToolState = {
+	items: string[]
+};
+
+class ColorTool extends React.Component {
+
+	props: ColorToolProps;
+	state: ColorToolState;
+
+	static propTypes = {
+		items: React.PropTypes.array,
+		headerText: React.PropTypes.string
+	};
 
 	constructor(props) {
 		super(props);
@@ -104,7 +101,7 @@ class HelloWorld extends React.Component {
 		});
 	};
 
-	render() {
+	render(): React.Element<any> {
 		return <div>
 			<ListHeader headerText={this.props.headerText} />
 			<ItemList items={this.state.items} />
@@ -116,7 +113,7 @@ class HelloWorld extends React.Component {
 
 const colors = ['red','blue','gold','white','yellow'];
 
-ReactDOM.render(<HelloWorld headerText='List of Colors' items={colors} />, document.querySelector('main'));
+ReactDOM.render(<ColorTool headerText='List of Colors' items={colors} />, document.querySelector('main'));
 
 
 
