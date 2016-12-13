@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -14,10 +16,8 @@ class ListHeader extends React.Component {
 
 	render() {
 
-		//this.props.headerText = 2;
-
 		return <header>
-			<h1>{this.props.headerText}!!!</h1>
+			<h1>{this.props.headerText}</h1>
 		</header>;
 	}
 
@@ -27,53 +27,88 @@ ListHeader.propTypes = {
 	headerText: React.PropTypes.string.isRequired
 };
 
-class HelloWorld extends React.Component {
+class ItemList extends React.Component {
+
+	render() {
+		return <ul>
+			{this.props.items.map(item =>
+				<li>{item}</li>
+			)}
+		</ul>;
+	}
+
+}
+
+ItemList.propTypes = {
+	items: React.PropTypes.array.isRequired
+};
+
+class BaseForm extends React.Component {
+
+	onChange = e => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	}
+
+}
+
+class ItemForm extends BaseForm {
 
 	constructor(props) {
 
 		super(props);
 
 		this.state = {
-			newColor: '',
-			items: props.items.concat()
+			newColor: ''
 		};
-
-		this.onChange = this.onChange.bind(this);
-		this.onClick = this.onClick.bind(this);
 	}
 
-	onChange(e) {
+	static propTypes = {
+		newColorAdded: React.PropTypes.func.isRequired
+	};
+
+	onClick = () => {
+
+		this.props.newColorAdded(this.state.newColor);
 
 		this.setState({
-			[e.target.name]: e.target.value
-		});
-
-	}
-
-	onClick() {
-
-		this.setState({
-			items: this.state.items.concat(this.state.newColor),
 			newColor: ''
 		});
-
-	}
+	};
 
 	render() {
+		return 	<form>
+			<label htmlFor="new-color-input">New Color:</label>
+			<input type="text" id="new-color-input" name="newColor"
+				value={this.state.newColor} onChange={this.onChange} />
+			<button type="button" onClick={this.onClick}>Add Color</button>
+		</form>;
+	}
 
+}
+
+
+class HelloWorld extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			items: props.items.concat()
+		};
+	}
+
+	addColor = (newColor) => {
+		this.setState({
+			items: this.state.items.concat(newColor),
+		});
+	};
+
+	render() {
 		return <div>
 			<ListHeader headerText={this.props.headerText} />
-			<ul>
-				{this.state.items.map(item =>
-					<li>{item}</li>
-				)}
-			</ul>
-			<form>
-				<label htmlFor="new-color-input">New Color:</label>
-				<input type="text" id="new-color-input" name="newColor"
-					value={this.state.newColor} onChange={this.onChange} />
-				<button type="button" onClick={this.onClick}>Add Color</button>
-			</form>
+			<ItemList items={this.state.items} />
+			<ItemForm newColorAdded={this.addColor} />
 		</div>;
 	}
 
