@@ -8,10 +8,12 @@ class HelloWorld extends React.Component {
 		super(props);
 
 		this.state = {
-			newColor: ''
+			newColor: '',
+			items: props.items.concat()
 		};
 
 		this.onChange = this.onChange.bind(this);
+		this.onClick = this.onClick.bind(this);
 	}
 
 	onChange(e) {
@@ -22,12 +24,21 @@ class HelloWorld extends React.Component {
 
 	}
 
+	onClick() {
+
+		this.setState({
+			items: this.state.items.concat(this.state.newColor),
+			newColor: ''
+		});
+
+	}
+
 	render() {
 
 		return <div>
 			<h1>{this.props.headerText}</h1>
 			<ul>
-				{this.props.items.map(item =>
+				{this.state.items.map(item =>
 					<li>{item}</li>
 				)}
 			</ul>
@@ -35,7 +46,7 @@ class HelloWorld extends React.Component {
 				<label htmlFor="new-color-input">New Color:</label>
 				<input type="text" id="new-color-input" name="newColor"
 					value={this.state.newColor} onChange={this.onChange} />
-				<button>Add Color</button>
+				<button type="button" onClick={this.onClick}>Add Color</button>
 			</form>
 		</div>;
 	}
