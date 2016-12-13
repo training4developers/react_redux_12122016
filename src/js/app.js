@@ -1,6 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'bootstrap-loader';
+import '../css/styles.scss';
+
+type ListHeaderProps = {
+	headerText: string
+};
+
+class ListHeader extends React.Component {
+
+	props: ListHeaderProps;
+
+	render() {
+
+		//this.props.headerText = 2;
+
+		return <header>
+			<h1>{this.props.headerText}!!!</h1>
+		</header>;
+	}
+
+}
+
+ListHeader.propTypes = {
+	headerText: React.PropTypes.string.isRequired
+};
+
 class HelloWorld extends React.Component {
 
 	constructor(props) {
@@ -36,7 +62,7 @@ class HelloWorld extends React.Component {
 	render() {
 
 		return <div>
-			<h1>{this.props.headerText}</h1>
+			<ListHeader headerText={this.props.headerText} />
 			<ul>
 				{this.state.items.map(item =>
 					<li>{item}</li>

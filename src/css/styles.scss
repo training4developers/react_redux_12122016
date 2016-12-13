@@ -1,3 +1,27 @@
-body { }
 
+body {
+}
+
+ul {
+
+	> li {
+
+		color:black;
+
+		&:hover {
+			color:blue;
+		}
+
+	}
+
+}
+
+
+// ul > li {
+// 	color:black;
+// }
+
+// ul > li:hover {
+// 	color:blue;
+// }
 
