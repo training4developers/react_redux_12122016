@@ -8,7 +8,7 @@ import '../css/styles.scss';
 
 //import { Car } from './models/car';
 
-// import { ColorTool } from './components/color-tool';
+//import { ColorTool } from './components/color-tool';
 //import { CarTool } from './components/car-tool';
 import { DemoForm } from './components/demo-form';
 
