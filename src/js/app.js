@@ -10,6 +10,7 @@ import { Car } from './models/car';
 
 import { ColorTool } from './components/color-tool';
 import { CarTool } from './components/car-tool';
+import { DemoForm } from './components/demo-form';
 
 const colors = ['red','blue','gold','white','yellow'];
 const cars = [
@@ -18,8 +19,9 @@ const cars = [
 	new Car({ make: 'Tesla', model: 'S', year: 2015, color: 'red', price: 100000 }),
 ];
 
-ReactDOM.render(<ColorTool toolCaption='List of Colors' colors={colors} />, document.querySelector('main'));
-//ReactDOM.render(<CarTool toolCaption='Table of Cars' cars={cars} />, document.querySelector('main'));
+//ReactDOM.render(<ColorTool toolCaption='List of Colors' colors={colors} />, document.querySelector('main'));
+ReactDOM.render(<CarTool toolCaption='Table of Cars' cars={cars} />, document.querySelector('main'));
+//ReactDOM.render(<DemoForm />, document.querySelector('main'));
 
 
 
