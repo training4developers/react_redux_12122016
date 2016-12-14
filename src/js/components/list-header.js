@@ -1,12 +1,17 @@
+/* @flow */
+
 import React from 'react';
 
 type ListHeaderProps = {
 	headerText: string
 };
 
+type ListHeaderState = Object;
+
 export class ListHeader extends React.Component {
 
 	props: ListHeaderProps;
+	state: ListHeaderState;
 
 	static propTypes = {
 		headerText: React.PropTypes.string.isRequired
@@ -17,6 +22,4 @@ export class ListHeader extends React.Component {
 			<h1>{this.props.headerText}</h1>
 		</header>;
 	}
-
 }
-
