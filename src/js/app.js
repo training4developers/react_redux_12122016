@@ -1,27 +1,57 @@
-/* @flow */
+import { createStore } from 'redux';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+const reducer = (state = 0, action) => {
 
-import 'bootstrap-loader';
-import '../css/styles.scss';
+	//console.log('state', state);
+	//console.log('action', action);
 
-//import { Car } from './models/car';
+	switch (action.type) {
+		case 'INCREMENT':
+			return state + action.value; // producing a new state
+		case 'DECREMENT':
+			return state - action.value; // producing a new state
+		default:
+			return state; // producing a new state
+	}
 
-//import { ColorTool } from './components/color-tool';
-//import { CarTool } from './components/car-tool';
-import { DemoForm } from './components/demo-form';
+};
 
-// const colors = ['red','blue','gold','white','yellow'];
-// const cars = [
-// 	new Car({ id: 1, make: 'Ford', model: 'Fusion', year: 2013, color: 'black', price: 23000 }),
-// 	new Car({ id: 2, make: 'Chevrolet', model: 'Malibu', year: 2011, color: 'blue', price: 33000 }),
-// 	new Car({ id: 3, make: 'Tesla', model: 'S', year: 2015, color: 'red', price: 100000 }),
-// ];
+const store = createStore(reducer);
 
-//ReactDOM.render(<ColorTool toolCaption='List of Colors' colors={colors} />, document.querySelector('main'));
-//ReactDOM.render(<CarTool toolCaption='Table of Cars' cars={cars} />, document.querySelector('main'));
-ReactDOM.render(<DemoForm />, document.querySelector('main'));
+store.subscribe(() => {
+	console.log(store.getState());
+});
+
+store.dispatch({ type: 'INCREMENT', value: 1 });
+store.dispatch({ type: 'DECREMENT', value: 2 });
+store.dispatch({ type: 'INCREMENT', value: 3 });
+store.dispatch({ type: 'DECREMENT', value: 4 });
+store.dispatch({ type: 'INCREMENT', value: 5 });
+
+
+
+
+// console.log([
+// 	{ type: 'INCREMENT', value: 1 }, // action
+// 	{ type: 'DECREMENT', value: 2 }, // action
+// 	{ type: 'INCREMENT', value: 3 }, // action
+// 	{ type: 'DECREMENT', value: 4 }, // action
+// 	{ type: 'INCREMENT', value: 5 }, // action
+// ].reduce( (state, action) => {
+
+// 	console.log('state', state);
+// 	console.log('action', action);
+
+// 	switch (action.type) {
+// 		case 'INCREMENT':
+// 			return state + action.value; // producing a new state
+// 		case 'DECREMENT':
+// 			return state - action.value; // producing a new state
+// 		default:
+// 			return state; // producing a new state
+// 	}
+
+// }, 0));
 
 
 

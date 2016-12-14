@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { BaseForm } from './base-form';
+import { InputSSN } from './input-ssn';
 
 type DemoFormProps = Object;
 type DemoFormState = {
@@ -16,7 +17,8 @@ type DemoFormState = {
 	textareaControl: string,
 	selectDropDownControl: string,
 	selectListBoxControl: string,
-	selectMultipleListBoxControl: string[]
+	selectMultipleListBoxControl: string[],
+	ssn: string
 };
 
 export class DemoForm extends BaseForm {
@@ -35,7 +37,8 @@ export class DemoForm extends BaseForm {
 		textareaControl: '',
 		selectDropDownControl: '',
 		selectListBoxControl: '',
-		selectMultipleListBoxControl: []
+		selectMultipleListBoxControl: [],
+		ssn: ''
 	});
 
 	constructor(props: DemoFormProps) {
@@ -44,8 +47,6 @@ export class DemoForm extends BaseForm {
 	}
 
 	render(): React.Element<any> {
-
-		console.log(this.state);
 
 		return <form>
 
@@ -151,6 +152,12 @@ export class DemoForm extends BaseForm {
 				<span>Value: {this.state.selectMultipleListBoxControl.join(',')}, Type: {typeof this.state.selectMultipleListBoxControl}</span>
 			</div>
 
+
+			<div>
+				<label>SSN:</label>
+				<InputSSN name="ssn" value={this.state.ssn} onChange={this.onChange} />
+				<br />Value: {this.state.ssn}
+			</div>
 
 		</form>;
 

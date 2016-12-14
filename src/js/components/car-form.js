@@ -50,6 +50,12 @@ export class CarForm extends BaseForm {
 		this.setState(CarForm.defaultState());
 	};
 
+	componentDidMount() {
+
+		this.makeInput.focus();
+
+	}
+
 	render(): React.Element<any> {
 		return <form>
 			<fieldset>
@@ -57,7 +63,8 @@ export class CarForm extends BaseForm {
 				<div>
 					<label htmlFor="new-make-input">Make:</label>
 					<input type="text" id="new-make-input" name="make"
-						value={this.state.make} onChange={this.onChange} />
+						value={this.state.make} onChange={this.onChange}
+						ref={input => this.makeInput = input} />
 				</div>
 				<div>
 					<label htmlFor="new-model-input">Model:</label>

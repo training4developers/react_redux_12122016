@@ -59,10 +59,14 @@ export class CarTool extends React.Component {
 			{ caption: 'Price', key: 'price' },
 		];
 
+		const dangerousContent = "<b>Hi!</b><script>console.log(0);</script>";
+
 		return <div>
 			<ToolHeader caption={this.props.toolCaption} />
 			<ItemTable items={this.state.cars} cols={cols} />
 			<CarForm newCarAdded={this.addCar} />
+			<div dangerouslySetInnerHTML={({  __html: dangerousContent })}></div>
+			<div>{dangerousContent}</div>
 		</div>;
 	}
 
