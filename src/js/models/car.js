@@ -2,21 +2,32 @@
 
 export class Car {
 
+	_id: number;
 	_make: string;
 	_model: string;
 	_year: number;
 	_color: string;
 	_price: number;
 
-	constructor({ make, model, year, color, price }: {
-		make: string, model: string, year: number, color: string, price: number
+	constructor({ id, make, model, year, color, price }: {
+		id: number, make: string, model: string, year: number, color: string, price: number
 	}) {
+
+		this.id = id;
 		this.make = make;
 		this.model = model;
 		this.year = year;
 		this.color = color;
 		this.price = price;
 	}
+
+	get id(): number {
+		return this._id;
+	}
+
+	set id(value: number) {
+		this._id = value;
+	}	
 
 	get make(): string {
 		return this._make;

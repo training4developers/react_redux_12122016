@@ -17,16 +17,21 @@ type CarToolState = {
 	cars: Car[],
 };
 
+// all React components inherit from React.Component or React.PureComponent
 export class CarTool extends React.Component {
 
+	// only here for Flow
 	props: CarToolProps;
 	state: CarToolState;
 
 	static propTypes = {
 		toolCaption: React.PropTypes.string,
+		// cannot directly reference the class when desiring an array of classes
+		// class must be passed in via the instanceOf function
 		cars: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Car)),
 	};
 
+	// helper function to initialize state based upon props or simply default values
 	static defaultState = (props: CarToolProps): CarToolState => ({
 		cars: props.cars.concat(),
 	});	
@@ -42,6 +47,8 @@ export class CarTool extends React.Component {
 		});
 	};
 
+	// with the later versions of Flow and React, this is the return type
+	// for render
 	render(): React.Element<any> {
 
 		const cols = [
@@ -49,7 +56,7 @@ export class CarTool extends React.Component {
 			{ caption: 'Model', key: 'model' },
 			{ caption: 'Year', key: 'year' },
 			{ caption: 'Color', key: 'color' },
-			{ caption: 'Price', key: 'Price' },
+			{ caption: 'Price', key: 'price' },
 		];
 
 		return <div>

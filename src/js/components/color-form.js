@@ -31,6 +31,9 @@ export class ColorForm extends BaseForm {
 	}
 
 	onClick = () => {
+		// invoking a function passed in via props from a parent component is the correct
+		// way to send data from a child component to a parent
+		// components should never modified props
 		this.props.newColorAdded(this.state.newColor);
 		this.setState(ColorForm.defaultState());
 	};

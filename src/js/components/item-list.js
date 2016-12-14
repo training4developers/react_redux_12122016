@@ -22,6 +22,10 @@ export class ItemList extends React.Component {
 	}
 
 	render(): React.Element<any> {
+
+		// use of functions such as map and filter, and inlining those function calls into the JSX
+		// is a very common approach to display lists of information
+
 		return <ul>
 			{this.props.items.map(item =>
 				<li>{item}</li>

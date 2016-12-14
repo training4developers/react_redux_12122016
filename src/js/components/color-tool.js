@@ -26,6 +26,11 @@ export class ColorTool extends React.Component {
 	};
 
 	static defaultState = (props: ColorToolProps): ColorToolState => ({
+		// the list of colors is state in the parent, and props in the child
+		// props versus state is determined by the context in which the data
+		// is used
+		// example: an employee's paycheck is props (immutable) to them, but state (mutable)
+		// to a person in human resources - same paycheck, different context
 		colors: props.colors.concat(),
 	});
 

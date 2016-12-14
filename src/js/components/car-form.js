@@ -6,6 +6,7 @@ import { Car } from '../models/car';
 import { BaseForm } from './base-form';
 
 type CarFormProps = {
+	// classes can be used as types in Flow
 	newCarAdded: (e: Car) => void,
 };
 
@@ -22,6 +23,10 @@ export class CarForm extends BaseForm {
 	props: CarFormProps;
 	state: CarFormState;
 
+	// not valid JavaScript
+	// requires transpiler plugin babel-plugin-transform-class-properties to allow value properties to be set
+	// with the assignment operator as part of the class definition
+	// static properties add a property to the function object
 	static propTypes = {
 		newCarAdded: React.PropTypes.func.isRequired
 	};
@@ -40,7 +45,8 @@ export class CarForm extends BaseForm {
 	}
 
 	onClick = () => {
-		this.props.newCarAdded(new Car(this.state));
+		const newCar = Object.assign({ id: 4 }, this.state);
+		this.props.newCarAdded(new Car(newCar));
 		this.setState(CarForm.defaultState());
 	};
 
@@ -70,7 +76,7 @@ export class CarForm extends BaseForm {
 				</div>
 				<div>
 					<label htmlFor="new-price-input">Price:</label>
-					<input type="text" id="new-price-input" name="price"
+					<input type="number" id="new-price-input" name="price"
 						value={this.state.price} onChange={this.onChange} />
 				</div>
 				<button type="button" onClick={this.onClick}>Add Car</button>

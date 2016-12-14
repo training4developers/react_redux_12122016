@@ -14,7 +14,7 @@ type ItemTableProps = {
 
 type ItemTableState = Object;
 
-export class ItemTable extends React.Component {
+export class ItemTable extends React.PureComponent {
 
 	props: ItemTableProps;
 	state: ItemTableState;
@@ -29,12 +29,12 @@ export class ItemTable extends React.Component {
 		return <table>
 			<thead>
 				<tr>
-					{this.props.cols.map(col => <th>{col.caption}</th>)}
+					{this.props.cols.map(col => <th key={col.key}>{col.caption}</th>)}
 				</tr>
 			</thead>
 			<tbody>
-				{this.props.items.map(item => <tr>
-					{this.props.cols.map(col => <td>{item[col.key]}</td>)}
+				{this.props.items.map(item => <tr key={item.id}>
+					{this.props.cols.map(col => <td key={col.key}>{item[col.key]}</td>)}
 				</tr>)}		
 			</tbody>
 		</table>;
