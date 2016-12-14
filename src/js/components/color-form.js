@@ -35,7 +35,7 @@ export class ColorForm extends BaseForm {
 		this.setState(ColorForm.defaultState());
 	};
 
-	render() {
+	render(): React.Element<any> {
 		return <form>
 			<label htmlFor="new-color-input">New Color:</label>
 			<input type="text" id="new-color-input" name="newColor"

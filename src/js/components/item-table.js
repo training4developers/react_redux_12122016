@@ -24,7 +24,7 @@ export class ItemTable extends React.Component {
 		items: React.PropTypes.array,
 	};
 
-	render() {
+	render(): React.Element<any> {
 
 		return <table>
 			<thead>

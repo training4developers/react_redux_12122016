@@ -44,7 +44,7 @@ export class CarForm extends BaseForm {
 		this.setState(CarForm.defaultState());
 	};
 
-	render() {
+	render(): React.Element<any> {
 		return <form>
 			<fieldset>
 				<legend>New Car</legend>

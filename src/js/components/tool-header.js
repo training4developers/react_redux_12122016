@@ -17,7 +17,7 @@ export class ToolHeader extends React.Component {
 		caption: React.PropTypes.string.isRequired
 	};
 
-	render() {
+	render(): React.Element<any> {
 		return <header>
 			<h1>{this.props.caption}</h1>
 		</header>;

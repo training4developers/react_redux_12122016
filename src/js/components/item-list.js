@@ -21,7 +21,7 @@ export class ItemList extends React.Component {
 		super(props);
 	}
 
-	render() {
+	render(): React.Element<any> {
 		return <ul>
 			{this.props.items.map(item =>
 				<li>{item}</li>
