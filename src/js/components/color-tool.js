@@ -2,17 +2,17 @@
 
 import React from 'react';
 
-import { ListHeader } from './list-header';
+import { ToolHeader } from './tool-header';
 import { ItemList } from './item-list';
-import { ItemForm } from './item-form';
+import { ColorForm } from './color-form';
 
 type ColorToolProps = {
-	items: string[],
-	headerText: string
+	toolCaption: string,
+	colors: string[],
 };
 
 type ColorToolState = {
-	items: string[]
+	colors: string[],
 };
 
 export class ColorTool extends React.Component {
@@ -21,28 +21,30 @@ export class ColorTool extends React.Component {
 	state: ColorToolState;
 
 	static propTypes = {
-		items: React.PropTypes.array,
-		headerText: React.PropTypes.string
+		toolCaption: React.PropTypes.string,
+		colors: React.PropTypes.arrayOf(React.PropTypes.string),
 	};
+
+	static defaultState = (props: ColorToolProps): ColorToolState => ({
+		colors: props.colors.concat(),
+	});
 
 	constructor(props: ColorToolProps) {
 		super(props);
-		this.state = {
-			items: props.items.concat()
-		};
+		this.state = ColorTool.defaultState(props);
 	}
 
 	addColor = (newColor: string) => {
 		this.setState({
-			items: this.state.items.concat(newColor),
+			colors: this.state.colors.concat(newColor),
 		});
 	};
 
 	render(): React.Element<any> {
 		return <div>
-			<ListHeader headerText={this.props.headerText} />
-			<ItemList items={this.state.items} />
-			<ItemForm newColorAdded={this.addColor} />
+			<ToolHeader caption={this.props.toolCaption} />
+			<ItemList items={this.state.colors} />
+			<ColorForm newColorAdded={this.addColor} />
 		</div>;
 	}
 
