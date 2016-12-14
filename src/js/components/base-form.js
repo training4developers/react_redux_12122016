@@ -12,7 +12,7 @@ export class BaseForm extends React.Component {
 
 	onChange = (e: SyntheticInputEvent) => {
 		this.setState({
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.type === 'number' ? parseInt(e.target.value, 10) : e.target.value
 		});
 	}
 
