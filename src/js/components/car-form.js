@@ -11,6 +11,7 @@ type CarFormProps = {
 };
 
 type CarFormState = {
+	id?: number,
 	make: string,
 	model: string,
 	year: number,
@@ -22,6 +23,7 @@ export class CarForm extends BaseForm {
 
 	props: CarFormProps;
 	state: CarFormState;
+	makeInput: HTMLInputElement;
 
 	// not valid JavaScript
 	// requires transpiler plugin babel-plugin-transform-class-properties to allow value properties to be set
@@ -45,15 +47,12 @@ export class CarForm extends BaseForm {
 	}
 
 	onClick = () => {
-		const newCar = Object.assign({ id: 4 }, this.state);
-		this.props.newCarAdded(new Car(newCar));
+		this.props.newCarAdded(new Car(this.state));
 		this.setState(CarForm.defaultState());
 	};
 
 	componentDidMount() {
-
 		this.makeInput.focus();
-
 	}
 
 	render(): React.Element<any> {

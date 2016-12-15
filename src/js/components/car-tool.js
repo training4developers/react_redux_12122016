@@ -8,9 +8,13 @@ import { ToolHeader } from './tool-header';
 import { ItemTable } from './item-table';
 import { CarForm } from './car-form';
 
+import { createCarsRefreshAction, createCarsAddAction } from '../actions/car-actions';
+
+import type { AppStore } from '../app-types';
+
 type CarToolProps = {
 	toolCaption: string,
-	cars: Car[],
+	store: AppStore,
 };
 
 type CarToolState = {
@@ -23,28 +27,44 @@ export class CarTool extends React.Component {
 	// only here for Flow
 	props: CarToolProps;
 	state: CarToolState;
+	unsubscribe: () => void;
 
 	static propTypes = {
 		toolCaption: React.PropTypes.string,
 		// cannot directly reference the class when desiring an array of classes
 		// class must be passed in via the instanceOf function
-		cars: React.PropTypes.arrayOf(React.PropTypes.instanceOf(Car)),
+		store: React.PropTypes.shape({
+			subscribe: React.PropTypes.func,
+			dispatch: React.PropTypes.func
+		}),
 	};
 
 	// helper function to initialize state based upon props or simply default values
-	static defaultState = (props: CarToolProps): CarToolState => ({
-		cars: props.cars.concat(),
+	static defaultState = (): CarToolState => ({
+		cars: [],
 	});	
 
 	constructor(props: CarToolProps) {
 		super(props);
-		this.state = CarTool.defaultState(props);
+		this.state = CarTool.defaultState();
+	}
+
+	componentDidMount() {
+		this.unsubscribe = this.props.store.subscribe(() => {
+			this.setState({
+				cars: this.props.store.getState().cars
+			});
+		});
+
+		this.props.store.dispatch(createCarsRefreshAction());
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe();
 	}
 
 	addCar = (newCar: Car) => {
-		this.setState({
-			cars: this.state.cars.concat(newCar),
-		});
+		this.props.store.dispatch(createCarsAddAction(newCar));
 	};
 
 	// with the later versions of Flow and React, this is the return type
@@ -59,14 +79,10 @@ export class CarTool extends React.Component {
 			{ caption: 'Price', key: 'price' },
 		];
 
-		const dangerousContent = "<b>Hi!</b><script>console.log(0);</script>";
-
 		return <div>
 			<ToolHeader caption={this.props.toolCaption} />
 			<ItemTable items={this.state.cars} cols={cols} />
 			<CarForm newCarAdded={this.addCar} />
-			<div dangerouslySetInnerHTML={({  __html: dangerousContent })}></div>
-			<div>{dangerousContent}</div>
 		</div>;
 	}
 

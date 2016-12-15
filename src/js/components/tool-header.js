@@ -2,7 +2,11 @@
 
 import React from 'react';
 
-export const ToolHeader = props => <header>
+type ToolHeaderProps = {
+	caption: string,
+};
+
+export const ToolHeader = (props: ToolHeaderProps) => <header>
 	<h1>{props.caption}</h1>
 </header>;
 

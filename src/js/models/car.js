@@ -1,5 +1,16 @@
 /* @flow */
 
+let lastCarId = 10;
+
+type CarParams = {
+	id?: number,
+	make: string,
+	model: string,
+	year: number,
+	color: string,
+	price: number,
+}
+
 export class Car {
 
 	_id: number;
@@ -9,11 +20,13 @@ export class Car {
 	_color: string;
 	_price: number;
 
-	constructor({ id, make, model, year, color, price }: {
-		id: number, make: string, model: string, year: number, color: string, price: number
-	}) {
+	constructor({ id, make, model, year, color, price }: CarParams) {
 
-		this.id = id;
+		if (id) {
+			this.id = id;
+		} else {
+			this.id = ++lastCarId;
+		}
 		this.make = make;
 		this.model = model;
 		this.year = year;

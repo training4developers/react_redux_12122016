@@ -6,6 +6,7 @@ import { BaseForm } from './base-form';
 import { InputSSN } from './input-ssn';
 
 type DemoFormProps = Object;
+
 type DemoFormState = {
 	inputTextControl: string,
 	inputNumberControl: number,
@@ -151,7 +152,6 @@ export class DemoForm extends BaseForm {
 				</select><br />
 				<span>Value: {this.state.selectMultipleListBoxControl.join(',')}, Type: {typeof this.state.selectMultipleListBoxControl}</span>
 			</div>
-
 
 			<div>
 				<label>SSN:</label>
