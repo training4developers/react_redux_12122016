@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -39,6 +41,8 @@ const reducer = (state = 0, action) => {
 const store = createStore(reducer);
 
 class Calculator extends BaseForm {
+
+	unsubscribe: () => void;
 
 	constructor(props) {
 		super(props);
