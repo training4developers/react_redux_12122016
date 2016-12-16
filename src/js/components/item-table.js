@@ -14,6 +14,11 @@ type ItemTableProps = {
 
 type ItemTableState = Object;
 
+export const ItemRow = props => <tr>
+	{props.cols.map(col => <td key={col.key}>{props.item[col.key]}</td>)}
+	<td><button type="button" onClick={() => props.deleteItem(props.item.id)}>Delete</button></td>
+</tr>;
+
 export class ItemTable extends React.PureComponent {
 
 	props: ItemTableProps;
@@ -33,9 +38,7 @@ export class ItemTable extends React.PureComponent {
 				</tr>
 			</thead>
 			<tbody>
-				{this.props.items.map(item => <tr key={item.id}>
-					{this.props.cols.map(col => <td key={col.key}>{item[col.key]}</td>)}
-				</tr>)}		
+				{this.props.items.map(item => <ItemRow key={item.id} item={item} {...this.props} />)}		
 			</tbody>
 		</table>;
 

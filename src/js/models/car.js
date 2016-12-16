@@ -80,5 +80,23 @@ export class Car {
 
 	set price(value: number) {
 		this._price = value;
-	}		
+	}
+	
+	toJSON() {
+
+		const jsonObj = {
+			make: this.make,
+			model: this.model,
+			year: this.year,
+			color: this.color,
+			price: this.price
+		};
+
+		if (this.id) {
+			jsonObj.id = this.id;
+		}
+
+		return jsonObj;
+
+	}
 }

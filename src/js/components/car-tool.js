@@ -8,8 +8,6 @@ import { ToolHeader } from './tool-header';
 import { ItemTable } from './item-table';
 import { CarForm } from './car-form';
 
-import { createCarsRefreshAction, createCarsAddAction } from '../actions/car-actions';
-
 import type { AppStore } from '../app-types';
 
 type CarToolProps = {
@@ -27,7 +25,6 @@ export class CarTool extends React.Component {
 	// only here for Flow
 	props: CarToolProps;
 	state: CarToolState;
-	unsubscribe: () => void;
 
 	static propTypes = {
 		toolCaption: React.PropTypes.string,
@@ -50,22 +47,18 @@ export class CarTool extends React.Component {
 	}
 
 	componentDidMount() {
-		this.unsubscribe = this.props.store.subscribe(() => {
-			this.setState({
-				cars: this.props.store.getState().cars
-			});
-		});
-
-		this.props.store.dispatch(createCarsRefreshAction());
+		//this.props.store.dispatch(createCarsRefreshAction());
+		this.props.refreshCars();
 	}
 
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
-
-	addCar = (newCar: Car) => {
-		this.props.store.dispatch(createCarsAddAction(newCar));
+	addCar = (car: Car) => {
+		//this.props.store.dispatch(createCarsAddAction(newCar));
+		this.props.addCar(car);
 	};
+
+	deleteCar = (id: number) => {
+		this.props.deleteCar(id);
+	}
 
 	// with the later versions of Flow and React, this is the return type
 	// for render
@@ -81,7 +74,7 @@ export class CarTool extends React.Component {
 
 		return <div>
 			<ToolHeader caption={this.props.toolCaption} />
-			<ItemTable items={this.state.cars} cols={cols} />
+			<ItemTable items={this.props.cars} cols={cols} deleteItem={this.deleteCar} />
 			<CarForm newCarAdded={this.addCar} />
 		</div>;
 	}
